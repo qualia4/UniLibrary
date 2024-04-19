@@ -3,16 +3,19 @@ namespace UniLibrary;
 public class Journal: ILibraryItem
 {
     public event Action<ILibraryItem>? bookAvailable;
+    private string id;
     private string Title;
     private string Country;
     private string Issue_Date;
     private int amountInLibrary;
 
-    public Journal(string _title, string _country, string _issueDate)
+    public Journal(string _title, string _country, string _issueDate, string _id)
     {
         Title = _title;
         Country = _country;
         Issue_Date = _issueDate;
+        id = _id;
+        amountInLibrary = 0;
     }
 
     public string getTitle()
@@ -45,6 +48,11 @@ public class Journal: ILibraryItem
         }
         amountInLibrary++;
         bookAvailable?.Invoke(this);
+    }
+
+    public string getId()
+    {
+        return id;
     }
 
     public void addToStock(int amount)

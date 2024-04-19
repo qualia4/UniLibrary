@@ -39,6 +39,12 @@ public class Book: ILibraryItem
         return false;
     }
 
+    public string getId()
+    {
+        return ISBN;
+    }
+
+
     public void addToStock(int amount)
     {
         amountInLibrary += amount;
